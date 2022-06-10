@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+    <link rel="stylesheet" href="./ResetCSS.css">
+    <style>
+        body{
+            background-color: #333333;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .logo img{
+            width: 270px;
+        }
+        .search-group{
+            width: 550px;
+            background-color: #fff;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0 20px 0;
+        }
+        .magnifier{
+            width: 20px;
+        }
+        .search{
+            width: 470px;
+            height: 40px;
+            border: none;
+            outline:none;
+            font-size: 15px;
+            margin: 0 0 0 10px;
+            padding: 0;
+            display: flex;
+        }
+        input::-webkit-input-placeholder{
+            font-size: 14px;
+        }
+        .mic{
+            width: 13px;
+            height: 100%;
+        }
+
+        .icon-group{
+            display: flex;
+        }
+
+        .icon{
+            width: 112px;
+            height: 112px;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .icon:hover{
+            background-color: #484848;
+            border-radius: 5px;
+        }
+
+        .icon-background{
+            width: 48px;
+            height: 48px;
+            background-color: #292929;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon-name{
+            font-size: 14px;
+        }
+
+        .youtube{
+            width: 23px;
+        }
+
+        .plus{
+            width: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="logo">
+            <img src="./googlelogo.png" alt="Google Logo">
+        </div>
+
+        <div class="search-group">
+            <img src="./放大鏡.png" alt="放大鏡" class="magnifier">
+            <input type="text" placeholder="搜尋 Google 或輸入網址" class="search" >
+            <a href="">
+                <img src="./麥克風.png" alt="麥克風" class="mic">
+            </a>
+        </div>
+
+        <div class="icon-group">
+            <a href="https://www.youtube.com/" class="icon">
+                <div class="icon-background">
+                    <img src="./youtube.png" alt="Youtube" class="youtube">
+                </div>
+                <div class="icon-name">
+                    <span>Youtube</span>
+                </div>
+            </a>
+            <a href="" class="icon">
+                <div class="icon-background">
+                    <img src="./add.png" alt="Plus" class="plus">
+                </div>
+                <div class="icon-name">
+                    <span>新增捷徑</span>
+                </div>
+
+            </a>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -13,7 +13,6 @@ body{
     font-family: Roboto, sans-serif;
 }
 
-
 .header{
     padding: 0px 40px;
 }
@@ -110,8 +109,8 @@ body{
     color: #000;
     text-decoration: none;
 }
-.header-nav-menu li:first-child a{
-    color: #ffb4b4;
+.header-nav-menu li a i{
+    color: #000;
 }
 .header-nav-menu li a:hover{
     color: #ffb4b4;
@@ -130,6 +129,11 @@ body{
     color: #adaaaa;
     text-decoration: none;
 }
+.header-nav-contact li a:hover{
+    color: #1d1c21;
+    transition: .5s;
+}
+
 
 
 
@@ -192,6 +196,9 @@ body{
     font-size: 20px;
     color: #909090;
     text-decoration: none;
+}
+.info-slider-news-page ul li:first-child{
+    border-bottom: 3px solid black;
 }
 .info-slider-news-page li:hover{
     border-bottom: 3px solid black;
@@ -369,7 +376,8 @@ body{
 }
 .accessory-item a h2:hover{
     border-bottom: 3px solid #fff;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
+    transform: translateY(-15px);
 }
 .accessory-item p{
     width: 75%;
@@ -436,6 +444,9 @@ body{
 .product-item-pic-black:hover{
     opacity: 1;
 }
+.product-item-pic-black i:hover{
+    color: #000;
+}
 .product-item-pic-black:hover ~ .product-item-pic-default{
     display: none;
 }
@@ -451,34 +462,53 @@ body{
     top: 20px;
     right: 0;
 }
-.product-item-name{
+.product-item-info{
     width: 100%;
     padding-top: 10px;
 }
-.product-item-name a{
+.product-item-info-default a{
     text-decoration: none;
 }
-.product-item-name h4{
+.product-item-info-default h4{
     font-size: 13px;
     color: #adaaaa;
     margin-bottom: 10px;
 }
-.product-item-name h3{
+.product-item-info-default h3{
     font-size: 16px;
     color: #232222;
     margin-bottom: 10px;
 }
-.product-item-name span{
+.product-item-info-default span{
     display: block;
     font-size: 18px;
     font-weight: bold;
     color: #232222;
     margin-bottom: 10px;
 }
-.product-item-name-star{
+.product-item-info-star{
     margin-right: 3px;
     color: #ffd71b;
     font-size: 13px;
+}
+.product-item-info-select{
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+    background-color: #000;
+    display: none;
+}
+.product-item-info:hover .product-item-info-default{
+    display: none;
+}
+.product-item-info:hover .product-item-info-select{
+    display: inline-block;
+    margin-top: 10px;
+}
+.product-item-info-select:hover{
+    background-color: #ffb4b4;
+
 }
 
 

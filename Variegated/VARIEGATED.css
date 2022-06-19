@@ -273,6 +273,10 @@ body{
     font-weight: bold;
     color: #232222;
 }
+.category-item li a span:hover{
+    color: #ffb4b4;
+    transition: 0.5s;
+}
 .category-item li a:nth-child(2):hover{
     cursor: grab;
 }

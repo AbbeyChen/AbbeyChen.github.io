@@ -43,10 +43,10 @@
 
 .media{
     width: 100%;
+    position: relative;
 }
 .media a{
     width: 100%;
-    position: relative;
     font-size: 0;
 }
 .media-pic{

@@ -119,7 +119,6 @@
         margin: auto;
         display: flex;
         flex-wrap: wrap;
-        position: relative;
     }
     .box:nth-child(even){
         flex-direction: row-reverse;

@@ -6,17 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abbey 作業表單</title>
     <link rel="stylesheet" href="./Reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         body{
-            margin: 10px;
+            margin: 30px 0;
+            font-family: 'Roboto', sans-serif;
+        }
+        h1{
+            font-size: 32px;
+            font-weight: 500;
+            text-align: center;
+        }
+        .homework{
+            width: 600px;
+            margin: auto;
             display: flex;
-            flex-direction: column;
+            justify-content: space-evenly;
+            padding: 30px 0;
+        }
+        .css, .js{
+            width: 50%;
+            padding: 15px;
+            margin: 0 15px;
+            background-color: #eee;
+        }
+        h2{
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        li{
+            padding: 10px 0;
         }
         a{
             font-size: 16px;
             color: #000;
             text-decoration: none;
-            margin: 10px;
         }
         a:hover{
             color: #999999;
@@ -24,13 +51,29 @@
     </style>
 </head>
 <body>
-    
-    <a href="./table/陳儀儒_Table.html">作業1 - 課表</a>
-    <a href="./Shopee/Shopee.html">作業2 - 蝦皮</a>
-    <a href="./Google/Google.html">作業2 - Google</a>
-    <a href="./SHOPLINE/SHOPLINE.html">作業3 - SHOPLINE</a>
-    <a href="./Variegated/VARIEGATED.html">作業4 - VARIEGATED</a>
-    <a href="./TOYOTA/TOYOTA.html">作業5 - TOYOTA</a>
+    <h1>Abbey's HOMEWORK</h1>
+    <div class="homework">
+        <div class="css">
+            <h2>HTML CSS</h2>
+            <ul>
+                <li><a href="./table/陳儀儒_Table.html">作業1 - 課表</a></li>
+                <li><a href="./Shopee/Shopee.html">作業2 - 蝦皮</a></li>
+                <li><a href="./Google/Google.html">作業2 - Google</a></li>
+                <li><a href="./SHOPLINE/SHOPLINE.html">作業3 - SHOPLINE</a></li>
+                <li><a href="./Variegated/VARIEGATED.html">作業4 - VARIEGATED</a></li>
+                <li><a href="./TOYOTA/TOYOTA.html">作業5 - TOYOTA</a></li>
+            </ul>
+            
+            
+        </div>
+        <div class="js">
+            <h2>JavaScript</h2>
+            <a href="./JS-Profile/Profile.html">作業1 - Profile</a>
+        </div>
+    </div>
+
+
+
 
 </body>
 </html>

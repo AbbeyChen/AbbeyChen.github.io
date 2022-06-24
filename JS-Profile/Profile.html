@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile by Abbey</title>
+    <link rel="stylesheet" href="../Reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        main{
+            width: 600px;
+            margin: auto;
+            border: 5px solid #735040;
+            padding: 30px;
+            border-radius: 30px;
+            background-color: #d4c5ab;
+        }
+        main > div{
+            margin: 10px 0;
+            border: 5px solid #b98659;
+            border-radius: 30px;
+            background-color: #f4ede2;
+        }
+        img{
+            vertical-align: top;
+        }
+        main > div:first-child{
+            text-align: center;
+            padding: 20px 0;
+        }
+        #headshot{
+            vertical-align: top;
+            width: 30%;
+            border-radius: 50%;
+        }
+        main > div:nth-child(2){
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #info{
+            padding: 15px
+        }
+        #info li{
+            padding: 10px;
+            font-size: 20px;
+            font-weight: 300;
+        }
+        #pic-list{
+            display: flex;
+            padding: 30px;
+        }
+        #pic-list li{
+            margin: 0 30px;
+            border-radius: 50px;
+            overflow: hidden;
+           
+        }
+        #pic-list img{
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <main>
+        <div>
+            <img id="headshot" src="" alt="">
+        </div>
+        <div>
+            <ul id="info"></ul>
+        </div>
+        <div>
+            <ul id="pic-list"></ul>
+        </div>
+    </main>
+
+    <script>
+
+        const headshotUrl = "./Profile PIC/豆皮.jpg";
+        let headshot = document.getElementById("headshot");
+        headshot.setAttribute("src", headshotUrl);
+
+        let name = "豆皮";
+        let email = "doupi@gmail.com";
+        let school = "浪浪別哭";
+        let habbits = "Sleep、Fish、ZJ"
+        let info = document.getElementById("info");
+        info.innerHTML = 
+        `<li>Name： ${name}</li>
+        <li>Email： ${email}</li>
+        <li>School： ${school}</li>
+        <li>Habbits： ${habbits}<li>`;
+            
+        const picUrl = [
+        "./Profile PIC/豆皮1.jpg",
+        "./Profile PIC/豆皮2.jpg",
+        "./Profile PIC/豆皮3.jpg"
+        ];
+        let picList = document.getElementById("pic-list")
+        picUrl.forEach((url) => {picList.innerHTML += `<li><img src="${url}"></li>`})
+
+        
+
+
+    </script>
+
+</body>
+</html>

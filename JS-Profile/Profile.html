@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,12 +9,14 @@
     <link rel="stylesheet" href="../Reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
     <style>
-        *{
+        * {
             font-family: 'Noto Sans TC', sans-serif;
         }
-        main{
+
+        main {
             width: 600px;
             margin: auto;
             border: 5px solid #735040;
@@ -21,55 +24,66 @@
             border-radius: 30px;
             background-color: #d4c5ab;
         }
-        main > div{
+
+        main>div {
             margin: 10px 0;
             border: 5px solid #b98659;
             border-radius: 30px;
             background-color: #f4ede2;
         }
-        img{
+
+        img {
             vertical-align: top;
         }
-        main > div:first-child{
+
+        main>div:first-child {
             text-align: center;
             padding: 20px 0;
         }
-        #headshot{
+
+        #headshot {
             vertical-align: top;
             width: 30%;
             border-radius: 50%;
         }
-        main > div:nth-child(2){
+
+        main>div:nth-child(2) {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        #info{
+
+        #info {
             padding: 15px
         }
-        #info li{
+
+        #info li {
             padding: 10px;
             font-size: 20px;
             font-weight: 300;
         }
-        #pic-list{
+
+        #pic-list {
             display: flex;
             padding: 30px;
         }
-        #pic-list li{
+
+        #pic-list li {
             margin: 0 30px;
-            border-radius: 50px;
+            border-radius: 30px;
             overflow: hidden;
-           
-        }
-        #pic-list img{
-            width: 100%;
+
         }
 
+        #pic-list img {
+            width: 100%;
+        }
     </style>
 </head>
+
 <body>
-    
+
+
     <main>
         <div>
             <img id="headshot" src="" alt="">
@@ -82,35 +96,55 @@
         </div>
     </main>
 
+
     <script>
 
         const headshotUrl = "./Profile PIC/豆皮.jpg";
         let headshot = document.getElementById("headshot");
         headshot.setAttribute("src", headshotUrl);
+        // headshot.src = headshotUrl;
 
-        let name = "豆皮";
-        let email = "doupi@gmail.com";
-        let school = "浪浪別哭";
-        let habbits = "Sleep、Fish、ZJ"
-        let info = document.getElementById("info");
-        info.innerHTML = 
-        `<li>Name： ${name}</li>
-        <li>Email： ${email}</li>
-        <li>School： ${school}</li>
-        <li>Habbits： ${habbits}<li>`;
-            
+
+
+        // let name = "豆皮";
+        // let email = "doupi@gmail.com";
+        // let school = "浪浪別哭";
+        // let habits = "Sleep、Fish、ZJ"
+        // let info = document.getElementById("info");
+        // info.innerHTML = 
+        // `<li>Name： ${name}</li>
+        // <li>Email： ${email}</li>
+        // <li>School： ${school}</li>
+        // <li>Habits： ${habits}<li>`;
+
+        let info = {
+            name: "豆皮",
+            email: "doupi@gmail.com",
+            school: "浪浪別哭",
+            habits: "Sleep、Fish、ZJ",
+        };
+        let infoDom = document.getElementById("info");
+        infoDom.innerHTML =
+            `<li>Name： ${info.name}</li>
+        <li>Email： ${info.email}</li>
+        <li>School： ${info.school}</li>
+        <li>Habits： ${info.habits}<li>`;
+
+
+
         const picUrl = [
-        "./Profile PIC/豆皮1.jpg",
-        "./Profile PIC/豆皮2.jpg",
-        "./Profile PIC/豆皮3.jpg"
+            "./Profile PIC/豆皮1.jpg",
+            "./Profile PIC/豆皮2.jpg",
+            "./Profile PIC/豆皮3.jpg"
         ];
         let picList = document.getElementById("pic-list")
-        picUrl.forEach((url) => {picList.innerHTML += `<li><img src="${url}"></li>`})
-
-        
+        picUrl.forEach((url) => {
+            picList.innerHTML += `<li><img src="${url}"></li>` 
+        })
 
 
     </script>
 
 </body>
+
 </html>

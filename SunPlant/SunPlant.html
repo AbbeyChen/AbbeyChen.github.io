@@ -17,15 +17,17 @@
 
     <h1>SunPlant</h1>
 
-    <input type="checkbox" id="menu-switch">
+    <input type="checkbox" id="open-menu">
 
     <header>
 
-        <label for="menu-switch">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
+        <div class="hb">
+            <label for="open-menu" class="hb-label">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+            </label>
+        </div>
         
         <div class="nav">
 
@@ -34,10 +36,16 @@
 
                 <ul class="nav-bar-login">
                     <li>
-                        <a href=""><i class="fa-solid fa-bars"></i>Menu</a>
+                        <a href="#">
+                            <i class="fa-solid fa-bars"></i>
+                            <span>Menu</span>
+                        </a>
                     </li>
                     <li>
-                        <i class="fa-solid fa-circle-user"></i>LOGIN
+                        <a href="#">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <span>LOGIN</span>
+                        </a>
                     </li>
                 </ul>
 
@@ -170,14 +178,20 @@
                     </li>
                 </ul>
 
-                <span class="nav-bar-close"></span>
+                <label for="open-menu" class="nav-bar-close">
+                    <div>
+                        <i class="fa-solid fa-x"></i>
+                        <span>CLOSE</span>
+                    </div>
+                </label>
 
             </div>
 
-            <div></div>
+
+            <label for="open-menu" class="nav-black"></label>
+
+
         </div>
-
-
 
         <a class="logo" href="https://sunplant-store-demo.myshopify.com/"><img src="https://cdn.shopify.com/s/files/1/0356/8343/4555/files/logo.png?v=1585540695" alt=""></a>
 
@@ -199,7 +213,7 @@
                 <span>from $69</span>
                 <a href="https://sunplant-store-demo.myshopify.com/collections/all">SHOP NOW</a>
             </div>
-            <img class="banner-pic" src="https://cdn.shopify.com/s/files/1/0356/8343/4555/files/slidesho10-small-1.png?v=1585303730" alt="">
+            <div class="banner-pic"><img src="https://cdn.shopify.com/s/files/1/0356/8343/4555/files/slidesho10-small-1.png?v=1585303730" alt=""></div>
             
         </section>
 

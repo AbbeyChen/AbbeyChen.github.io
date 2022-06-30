@@ -1599,17 +1599,18 @@ input {
     align-items: center;
     padding: 50px 0 80px;
   }
-  footer a {
+  footer > a {
+    display: block;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
   }
-  footer a img {
+  footer > a img {
     width: 45%;
   }
   footer .footer-info {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
   }
   footer .footer-info-item {
     margin: 0 15px;

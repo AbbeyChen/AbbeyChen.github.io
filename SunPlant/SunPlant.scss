@@ -1863,9 +1863,10 @@ input{
         align-items: center;
         padding: 50px 0 80px;
     
-        a{
+        > a{
+            display: block;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 50px;
     
             img{
                 width: 45%;
@@ -1874,7 +1875,7 @@ input{
         .footer-info{
             display: flex;
             justify-content: space-between;
-            margin-bottom: 30px;
+            margin-bottom: 50px;
     
             &-item{
                 margin: 0 15px;

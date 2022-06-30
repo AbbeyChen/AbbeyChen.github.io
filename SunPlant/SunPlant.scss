@@ -1116,7 +1116,7 @@ input{
                                 border-color: transparent transparent transparent #48c8fd;
                                 position: absolute;
                                 top: 7px;
-                                left: 50px;
+                                right: 0px;
                             }
                         }
             
@@ -1137,7 +1137,12 @@ input{
                                 margin-bottom: 25px;
                                 padding: 0 15px;
                                 a{
+                                    display: block;
                                     margin-bottom: 15px;
+
+                                    &:hover{
+                                        box-shadow: 0 2px 10px -2px #0000004d;
+                                    }
             
                                     img{
                                         width: 100%;
@@ -1441,7 +1446,6 @@ input{
         }
     }
     
-
     main{
     
         .banner{

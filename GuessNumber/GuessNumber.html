@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>終極密碼 by Abbey</title>
+    <link rel="stylesheet" href="../Reset.css">
+    <style>
+        body {
+            width: 960px;
+            margin: auto;
+            padding: 50px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .range {
+            width: 500px;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .range label {
+            display: inline-block;
+            width: 100%;
+            height: 100px;
+            border: 3px solid black;
+            font-size: 30px;
+            line-height: 100px;
+        }
+
+        .guess {
+            width: 960px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+        }
+
+        #answer {
+            width: 150px;
+            height: 50px;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        #guessNum {
+            display: inline-block;
+            width: 150px;
+            height: 50px;
+            border: 3px solid gray;
+            text-align: center;
+            font-size: 18px;
+            line-height: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .number-group {
+            width: 150px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .number{
+            width: 30px;
+            margin: 0 10px 10px;
+            height: 30px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="range">
+        <label id="rangeNum" for=""></label>
+    </div>
+    <div class="guess">
+        <button id="answer" onclick="randomNum()">開始遊戲</button>
+        <label id="guessNum" for=""></label>
+        <div class="number-group">
+            <button class="number">1</button>
+            <button class="number">2</button>
+            <button class="number">3</button>
+            <button class="number">4</button>
+            <button class="number">5</button>
+            <button class="number">6</button>
+            <button class="number">7</button>
+            <button class="number">8</button>
+            <button class="number">9</button>
+            <button class="number" id="clear" onclick="clearAns()">X</button>
+            <button class="number">0</button>
+            <button class="number" id="check" onclick="checkAns()">V</button>
+        </div>
+    </div>
+
+
+
+    <script src="./GuessNumber.js"></script>
+
+</body>
+
+</html>

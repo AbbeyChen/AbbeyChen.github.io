@@ -21,9 +21,13 @@
             font-size: 18px;
             margin: 0 10px;
         }
+
+
         .btnGroup{
             padding: 15px 0;
         }
+
+
         .history{
             width: 50%;
             height: 300px;
@@ -34,8 +38,6 @@
         .history li{
             padding: 10px;
             border-bottom: 1px solid black;
-        }
-        .history li span{
         }
         .tag{
             display: inline-block;
@@ -60,14 +62,16 @@
             font-size: 20px;
             font-weight: bold;
         }
-        .guess{
+
+
+        .enter{
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
             font-size: 20px;
         }
-        #enterNum{
+        #inputNum{
             display: inline-block;
             width: 250px;
             height: 30px;
@@ -82,9 +86,9 @@
 <body>
     
     <div class="btnGroup">
-        <button id="createAns" onclick="createAnswer()">開始</button>
-        <button id="resetAns" onclick="resetAnswer()">放棄重來</button>
-        <button id="showAns" onclick="showAnswer()">看答案</button>
+        <button id="createAnsBtn" onclick="createAnswer()">開始</button>
+        <button id="resetAnsBtn" onclick="resetAnswer()">放棄重來</button>
+        <button id="showAnsBtn" onclick="showAnswer()">看答案</button>
     </div>
 
     <ul class="history">
@@ -98,10 +102,10 @@
         </li> -->
     </ul>
 
-    <div class="guess">
+    <div class="enter">
         <span>猜答案：</span>
-        <input type="text" id="enterNum">
-        <button id="guessNum" onclick="checkAnswer()">猜</button>
+        <input type="text" id="inputNum" maxlength="4">
+        <button id="checkNumBtn" onclick="checkAnswer()">猜</button>
     </div>    
 
 

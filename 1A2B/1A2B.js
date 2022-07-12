@@ -1,40 +1,40 @@
 
 
-let createAns, resetAns, showAns, guessNum
+let createAnsBtn, resetAnsBtn, showAnsBtn, checkNumBtn
 let history
-let enterNum
+let inputNum
 
 
 
 let answer = []
-let submitNum = []
+let guessNum = []
 
 
 
 window.onload = function () {
-    createAns = document.querySelector('#createAns')
-    resetAns = document.querySelector('#resetAns')
-    showAns = document.querySelector('#showAns')
-    guessNum = document.querySelector('#guessNum')
-    enterNum = document.querySelector('#enterNum')
+    createAnsBtn = document.querySelector('#createAnsBtn')
+    resetAnsBtn = document.querySelector('#resetAnsBtn')
+    showAnsBtn = document.querySelector('#showAnsBtn')
+    checkNumBtn = document.querySelector('#checkNumBtn')
+    inputNum = document.querySelector('#inputNum')
     history = document.querySelector('.history')
     init()
 }
 
 function init() {
-    createAns.disabled = false
-    resetAns.disabled = true
-    showAns.disabled = true
-    guessNum.disabled = true
-    enterNum.disabled = true
+    createAnsBtn.disabled = false
+    resetAnsBtn.disabled = true
+    showAnsBtn.disabled = true
+    checkNumBtn.disabled = true
+    inputNum.disabled = true
 }
 
 function startGame() {
-    createAns.disabled = true
-    resetAns.disabled = false
-    showAns.disabled = false
-    guessNum.disabled = false
-    enterNum.disabled = false
+    createAnsBtn.disabled = true
+    resetAnsBtn.disabled = false
+    showAnsBtn.disabled = false
+    checkNumBtn.disabled = false
+    inputNum.disabled = false
 }
 
 function createAnswer() {
@@ -53,7 +53,7 @@ function resetAnswer() {
     showAnswer()
     answer = []
     createAnswer()
-    enterNum.value = ''
+    inputNum.value = ''
 }
 
 function showAnswer() {
@@ -66,17 +66,17 @@ function checkAnswer() {
     let a = 0
     let b = 0
 
-    if (enterNum.value == undefined) {
+    if (inputNum.value == undefined) {
         return
     }
-    submitNum = [...new Set(enterNum.value.split(''))];
+    guessNum = [...new Set(inputNum.value.split(''))];
 
-    if (isNaN(enterNum.value) || submitNum.length != 4) {
+    if (isNaN(inputNum.value) || inputNum.value % 1 != 0 || guessNum.length != 4) {
         alert(`請輸入四個不重複的數字！`)
-        enterNum.value = ""
+        inputNum.value = ""
     }
     else {
-        submitNum.forEach((num, index) => {
+        guessNum.forEach((num, index) => {
             let answerIndex = answer.findIndex(x => x == num)
             if (answerIndex == index) {
                 a++
@@ -86,9 +86,9 @@ function checkAnswer() {
             }
         })
         createHistoryRow(a, b)
-        checkIsWin(a)
+        setTimeout(() => { checkIsWin(a) }, 1000)
     }
-    enterNum.value = ''
+    inputNum.value = ''
 
 }
 
@@ -97,7 +97,7 @@ function createHistoryRow(a, b) {
     let result = document.createElement('span')
     let number = document.createElement('span')
     result.innerText = `${a}A${b}B`
-    number.innerText = submitNum.join('')
+    number.innerText = guessNum.join('')
 
     if (a != 4) {
         result.classList.add('wrong', 'tag')
@@ -109,7 +109,7 @@ function createHistoryRow(a, b) {
     number.classList.add('number')
     li.append(result, number)
     history.append(li)
-
+    scrollToBottom()
 }
 
 function checkIsWin(a) {
@@ -117,4 +117,8 @@ function checkIsWin(a) {
         alert(`太神啦！你猜對了！`)
         init()
     }
+}
+
+function scrollToBottom() {
+    history.scrollTop = history.scrollHeight
 }

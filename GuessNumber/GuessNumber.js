@@ -66,7 +66,7 @@ function checkAns() {
         init()
         answer = undefined
     }
-    guessNum.innerText = ""
+    clearAns()
 }
 
 function clearAns() {

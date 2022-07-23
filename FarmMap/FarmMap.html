@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map by Abbey</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+        integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+        crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/426125659f.js" crossorigin="anonymous"></script>
+
+    <!-- Sweet Alert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        .btn:focus,
+        .btn:active:focus,
+        .btn.active:focus,
+        .btn.focus,
+        .btn:active.focus,
+        .btn.active.focus,
+        button:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .container-fluid {
+            height: 100vh;
+        }
+
+
+        #map {
+            height: 100%;
+        }
+
+        h1 {
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .info,
+        .map {
+            height: calc(100vh - 80px);
+        }
+
+        .content {
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+        }
+
+        .accordion-button {
+            padding: 10px 15px;
+            font-size: 18px;
+        }
+
+        th {
+            width: 100px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .popup {
+            text-align: center;
+        }
+
+        .popup h5 {
+            font-size: 20px;
+        }
+
+        .popup span {
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid py-3">
+        <h1 class="text-center">全國休閒農業區旅遊資訊</h1>
+        <div class="row">
+            <div class="info col-6">
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <label for="county" class="form-label">台灣縣市：</label>
+                        <select id="county" class="form-control" onchange="selectedCounty()">
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <label for="town" class="form-label">台灣行政區：</label>
+                        <select id="town" class="form-control" onchange="selectedTown()">
+                        </select>
+                    </div>
+                </div>
+                <div class="content row ps-1">
+                    <!-- <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button farm-name" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    休閒農場名稱
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <th>地址</th>
+                                                <td class="address-td">苗栗縣公館鄉福基村6鄰154號</td>
+                                            </tr>
+                                            <tr>
+                                                <th>電話</th>
+                                                <td class="tel-td">(037) 237-698</td>
+                                            </tr>
+                                            <tr>
+                                                <th>介紹</th>
+                                                <td class="introduction-td">
+                                                    公館鄉位於苗栗縣中央偏西，介於八角崠山賣和後龍溪之間，境內地勢以東部較高，從八角崠山脈脈向後龍溪方向降低，成為苗栗河谷平原，視野寬闊。黃金小鎮區域範圍涵蓋公館鄉以南的四個村，沿線經過館南村、福星村、福基村、石墻村等村落。每至農忙時期，田野間的稻穗呈現一片澄黃，到了5至7月時，台6線兩旁的阿勃勒樹盛開，枝頭一片燦爛金黃，美不勝收，使得黃金小鎮之名不脛而走。經行政院農業委員會98年初公告劃定，黃金小鎮休閒農業區正式成立。\r\r
+                                                    黃金小鎮休閒農業區仍保有客家村的農業生產，主要作物除了水稻外，還有柿子、芋頭、草苺、福菜、百香果等，早期亦以製陶聞名，尤其是全台唯一的紅棗，近年來更打出知名度，而稻草編織和竹藝也是這裡的特色產業。每到農忙時期，田野間的稻穗呈現一片片黃澄澄，當金黃色的夕陽照耀著大地，更顯美麗；除了美景外，過去典型農業型態漸而轉為多元精緻化，沿線居民結合了陶藝、竹編、觀光農園、特色餐飲、庭園景觀、花卉農場等，讓地方產業更具特色。\r\r
+                                                    強調健康養生的黃金小鎮，目前已規劃多條自行車道，非常適合慢活樂遊，欣賞田園風光，區內也有多家以紅棗養生或是客家美食為特色的田園餐廳或小吃店。本區連外交通非常便利，且一年到頭有許多產業文化活動和客家節慶民俗活動，不論是開車、搭火車或是國道客運，都能讓遊客方便前往。\r
+                                                    【如欲安排前往建議事先電話聯繫確認】</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="map col-6 pe-3">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+
+    <template id="accordion-template">
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed farm-name" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-controls="collapseOne" aria-expanded="false">
+                        休閒農場名稱
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse farm-body" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <table class="table table-striped">
+                            <tbody class="tbody">
+                                <tr class="tr">
+                                    <th class="address-th">地址</th>
+                                    <td class="address-td">苗栗縣公館鄉福基村6鄰154號</td>
+                                </tr>
+                                <tr class="tr">
+                                    <th class="tel-th">電話</th>
+                                    <td class="tel-td">(037) 237-698</td>
+                                </tr>
+                                <tr class="tr">
+                                    <th class="introduction-th">介紹</th>
+                                    <td class="introduction-td">
+                                        公館鄉位於苗栗縣中央偏西，介於八角崠山賣和後龍溪之間，境內地勢以東部較高，從八角崠山脈脈向後龍溪方向降低，成為苗栗河谷平原，視野寬闊。黃金小鎮區域範圍涵蓋公館鄉以南的四個村，沿線經過館南村、福星村、福基村、石墻村等村落。每至農忙時期，田野間的稻穗呈現一片澄黃，到了5至7月時，台6線兩旁的阿勃勒樹盛開，枝頭一片燦爛金黃，美不勝收，使得黃金小鎮之名不脛而走。經行政院農業委員會98年初公告劃定，黃金小鎮休閒農業區正式成立。\r\r
+                                        黃金小鎮休閒農業區仍保有客家村的農業生產，主要作物除了水稻外，還有柿子、芋頭、草苺、福菜、百香果等，早期亦以製陶聞名，尤其是全台唯一的紅棗，近年來更打出知名度，而稻草編織和竹藝也是這裡的特色產業。每到農忙時期，田野間的稻穗呈現一片片黃澄澄，當金黃色的夕陽照耀著大地，更顯美麗；除了美景外，過去典型農業型態漸而轉為多元精緻化，沿線居民結合了陶藝、竹編、觀光農園、特色餐飲、庭園景觀、花卉農場等，讓地方產業更具特色。\r\r
+                                        強調健康養生的黃金小鎮，目前已規劃多條自行車道，非常適合慢活樂遊，欣賞田園風光，區內也有多家以紅棗養生或是客家美食為特色的田園餐廳或小吃店。本區連外交通非常便利，且一年到頭有許多產業文化活動和客家節慶民俗活動，不論是開車、搭火車或是國道客運，都能讓遊客方便前往。\r
+                                        【如欲安排前往建議事先電話聯繫確認】</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+
+    <!-- Axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
+    <script>
+
+        // 初始化地圖
+        let map = L.map('map', {
+            center: [23.58259486, 120.58552886],
+            zoom: 7
+        })
+
+        // 設定圖資來源
+        let layerUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+        var layer = new L.TileLayer(layerUrl, {
+            minZoom: 7,
+            maxZoom: 19,
+            attribution: '全國休閒農業區旅遊資訊 by Abbey'
+        })
+
+        // 把圖資加到地圖上
+        map.addLayer(layer)
+
+        // 請求資料
+        // 台灣行政區的經緯度
+        const taiwanRequest = axios.get('https://raw.githubusercontent.com/AbbeyChen/FileStorage/main/Taiwan.json')
+        // 全國休閒農業區旅遊資訊
+        const farmRequest = axios.get('https://raw.githubusercontent.com/AbbeyChen/FileStorage/main/LeisureFarm.json')
+
+        // 宣告
+        let taiwanData // 行政區經緯度資料
+        let farmData // 休閒農場資料
+        let farmAreaData // 休閒農場經緯度 + 資訊
+        let markers = L.markerClusterGroup();
+        let countyText, countyValue, townText, townValue
+        let prevAccordion = null
+
+        // DOM
+        let countySelect = document.querySelector('#county');
+        let townSelect = document.querySelector('#town');
+        let content = document.querySelector('.content')
+        let accordionTemplate = document.querySelector('#accordion-template')
+
+        // window.onload
+        window.onload = function () {
+            Promise.all([taiwanRequest, farmRequest])
+                .then(res => {
+                    let taiwanRes = res[0]
+                    let farmRes = res[1]
+
+                    taiwanData = taiwanRes.data
+                    farmData = farmRes.data
+                })
+                .then(res => {
+                    // 初始化下拉選單
+                    setSelectOptions(taiwanData)
+                })
+
+        }
+
+        // function
+
+        // 設定countySelect
+        function setSelectOptions(taiwanData) {
+            ['請選擇縣市']
+                .concat([...new Set(taiwanData.map(c => c.City))])
+                .forEach(city => {
+                    let countyOpt = document.createElement('option')
+                    countyOpt.innerText = city
+                    countyOpt.value = city == '請選擇縣市' ? '' : city
+
+                    countySelect.appendChild(countyOpt)
+                })
+
+            resetTownSelect()
+        }
+
+        // 設定marker
+        function setMarker(farm) {
+
+            // 設定marker icon
+            let farmIcon = L.icon({
+                iconUrl: './tree.png',
+                iconSize: [45, 45]
+            });
+            let marker = L.marker([farm.Latitude, farm.Longitude], { icon: farmIcon })
+            marker.bindPopup(`
+                <div class="popup">
+                    <h5>${farm.City} ${farm.Town}</h5>
+                    <span style="">${farm.Name}</span>
+                </div>
+            `)
+            markers.addLayer(marker)
+            map.addLayer(markers)
+        }
+
+        // 設定map
+        function setMap(lat = 23.58259486, lng = 120.58552886, zoom = 7) {
+            map.setView([lat, lng], zoom)
+        }
+
+
+        // 變更地圖為選中county
+        function selectedCounty() {
+            // 取得當前選中的縣市資料
+            countyText = countySelect.selectedOptions[0].text;
+            countyValue = countySelect.selectedOptions[0].value;
+            // 判斷countySelect狀態
+            // 如未選擇縣市則清除townSelect並return
+            if (countyValue == '') {
+                resetTownSelect()
+                setMap()
+                return
+            } else {
+                let county = taiwanData.find(c => c.City == countyValue)
+                setMap(county.Lat, county.Lng, 10)
+                resetTownSelect()
+                setTownSelect()
+                let farmArr = showFarmData("City", countyValue)
+                Swal.fire(`${countyText}有${farmArr.length}個農場`);
+            }
+
+        }
+
+
+        // 清除townSelect
+        function resetTownSelect() {
+            townSelect.disabled = true
+            townSelect.innerHTML = ''
+            let townOpt = document.createElement('option')
+            townOpt.innerText = '請選擇行政區'
+            townOpt.value = ''
+            townSelect.append(townOpt)
+        }
+
+
+        // 設定townSelect
+        function setTownSelect() {
+            townSelect.disabled = false;
+            // 從當前選中的縣市產出行政區資料
+            let townArr = taiwanData.filter(c => c.City == countyText).map(c => c.District)
+            // 產生行政區選項
+            townArr.forEach(town => {
+                let townOpt = document.createElement('option')
+                townOpt.innerText = town
+                townOpt.value = town == '請選擇行政區' ? '' : town
+                townSelect.add(townOpt)
+            })
+        }
+
+
+        // 變更地圖為選中twon
+        function selectedTown() {
+            // 取得當前選中的行政區資料
+            townText = townSelect.selectedOptions[0].text;
+            townValue = townSelect.selectedOptions[0].value;
+
+            if (townValue == '') {
+                selectedCounty()
+            }
+            else {
+                let town = taiwanData.find(c => c.District == townValue)
+                setMap(town.Lat, town.Lng, 13)
+                showFarmData("Town", townValue)
+            }
+        }
+
+        // 顯示Accordion
+        function showFarmData(area, areaValue) {
+            map.removeLayer(markers)
+            markers = L.markerClusterGroup();
+            content.innerHTML = ''
+            let farmArr = farmData.filter(f => f[area] == areaValue)
+            farmArr.forEach((farm, index) => {
+                content.appendChild(createAccordion(farm, index))
+                setMarker(farm)
+            })
+            return farmArr
+        }
+
+        // 產Accordion
+        function createAccordion(farm, index) {
+            let cloneAccordion = accordionTemplate.content.cloneNode(true);
+            cloneAccordion.querySelector('.farm-name').innerText = farm.Name
+            cloneAccordion.querySelector('.farm-name').setAttribute('data-bs-target', `#collapse${index}`)
+            cloneAccordion.querySelector('.farm-body').setAttribute('id', `collapse${index}`)
+            cloneAccordion.querySelector('.address-td').innerText = farm.Address
+            cloneAccordion.querySelector('.tel-td').innerText = farm.Tel
+            cloneAccordion.querySelector('.introduction-td').innerText = farm.Introduction
+
+            cloneAccordion.querySelector('.farm-name').onclick = function () {
+
+                if (prevAccordion != null) {
+                    prevAccordion.classList.remove('show')
+                }
+                prevAccordion = document.getElementById(`collapse${index}`)
+            }
+            return cloneAccordion
+        }
+
+
+        // array groupby方法註冊
+        Array.prototype.groupBy = function (prop) {
+            return this.reduce(function (groups, item) {
+                const val = item[prop]
+                groups[val] = groups[val] || []
+                groups[val].push(item)
+                return groups
+            }, {})
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -167,7 +167,6 @@ function changeMonth(value) {
 // 設定Modal的Title
 function setTodoTitle(todoTitle, date) {
     todoTitle.innerText = `${date}待辦事項`
-    console.log('aaa')
 }
 
 // 預設Modal資料

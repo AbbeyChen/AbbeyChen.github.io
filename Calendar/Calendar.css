@@ -127,21 +127,17 @@ body {
   height: 100px;
   outline: none;
 }
-.modal-content .modal-footer .btn-cancel {
-  color: #fff;
-  background-color: #999;
-}
 .modal-content .modal-footer .btn-save {
   color: #fff;
   background-color: var(--primary-color);
 }
 .modal-content .modal-footer .btn-delete {
   color: #fff;
-  background-color: rgb(240, 69, 69);
+  background-color: rgb(167, 161, 161);
 }
 .modal-content .modal-footer .btn-edit {
   color: #fff;
-  background-color: rgb(24, 182, 235);
+  background-color: rgb(24, 178, 229);
 }
 
 @media screen and (min-width: 1300px) {

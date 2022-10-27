@@ -5,95 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>待辦清單 by Abbey</title>
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
     <!-- Sweet Alert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>待辦清單 by Abbey</title>
-    <style>
-        .btn:focus,
-        .btn:active:focus,
-        .btn.active:focus,
-        .btn.focus,
-        .btn:active.focus,
-        .btn.active.focus,
-        button:focus {
-            outline: none !important;
-            box-shadow: none !important;
-        }
 
-        .input:focus,
-        .input:active:focus,
-        .input.active:focus,
-        .input.focus,
-        .input:active.focus,
-        .input.active.focus,
-        input:focus {
-            outline: none !important;
-            box-shadow: none !important;
-        }
-
-        body {
-            padding-top: 30px;
-            margin: auto;
-        }
-
-        .input-group {
-            margin-right: 10px;
-        }
-
-        .input-group>.form-control {
-            font-size: 20px;
-            padding-left: 20px;
-        }
-
-        .todo-input {
-            margin-bottom: 30px;
-        }
-
-        .todo-list {
-            padding: unset;
-            border: 3px solid #999;
-        }
-
-        .todo-item {
-            padding: 30px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .todo-item>.input-group {
-            width: 85%;
-        }
-
-        .todo-item+.todo-item {
-            border-top: 3px solid #999;
-        }
-
-        .input-group-text {
-            padding: 0 20px
-        }
-
-        .form-check-input {
-            font-size: 20px;
-        }
-
-        .btn-area {
-            width: 15%;
-            display: flex;
-            justify-content: space-evenly;
-        }
-
-        .btn-primary,
-        .btn-success,
-        .btn-warning,
-        .btn-danger {
-            width: 70px;
-            padding: 8px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="./TodoList.css">
 </head>
 
 <body>
@@ -123,16 +45,20 @@
             </div>
             <div class="btn-area">
                 <button class="save-btn btn btn-success d-none" type="submit">保存</button>
-                <button class="edit-btn btn btn-warning" type="submit">編輯</button>
+                <button class="edit-btn btn btn-warning me-1" type="submit">編輯</button>
                 <button class="delete-btn btn btn-danger" type="submit">刪除</button>
             </div>
         </li>
     </template>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
-    <script></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+        integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+        crossorigin="anonymous"></script>
 
     <script src="./TodoList.js"></script>
 

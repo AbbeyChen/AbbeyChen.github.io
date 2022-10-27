@@ -1,0 +1,62 @@
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus,
+button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+body {
+    background-color: rgb(228, 255, 226);
+}
+
+.container {
+    height: 100vh;
+}
+
+
+#map {
+    height: 100%;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.info,
+.map {
+    height: calc(100vh - 100px);
+}
+
+.content {
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+}
+
+.accordion-button {
+    padding: 10px 15px;
+    font-size: 18px;
+}
+
+th {
+    width: 100px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.popup {
+    text-align: center;
+}
+
+.popup h5 {
+    font-size: 20px;
+}
+
+.popup span {
+    font-size: 16px;
+}

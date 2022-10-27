@@ -1,0 +1,83 @@
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus,
+button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.input:focus,
+.input:active:focus,
+.input.active:focus,
+.input.focus,
+.input:active.focus,
+.input.active.focus,
+input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+body {
+    padding-top: 100px;
+    margin: auto;
+}
+.container{
+    width: 800px;
+}
+.input-group {
+    margin-right: 10px;
+}
+
+.input-group>.form-control {
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.todo-input {
+    margin-bottom: 30px;
+}
+
+.todo-list {
+    padding: unset;
+    border: 3px solid #999;
+}
+
+.todo-item {
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-item>.input-group {
+    width: 85%;
+}
+
+.todo-item+.todo-item {
+    border-top: 3px solid #999;
+}
+
+.input-group-text {
+    padding: 0 20px
+}
+
+.form-check-input {
+    font-size: 20px;
+}
+
+.btn-area {
+    width: 15%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn-primary,
+.btn-success,
+.btn-warning,
+.btn-danger {
+    width: 70px;
+    padding: 8px 0;
+}

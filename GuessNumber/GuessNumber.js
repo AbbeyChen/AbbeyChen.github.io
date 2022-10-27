@@ -12,7 +12,7 @@ window.onload = function () {
 
 
 let answer = undefined
-let answerBtn = document.querySelector('#answer')
+let startBtn = document.querySelector('#startBtn')
 let guessNum = document.querySelector('#guessNum')
 
 
@@ -36,7 +36,7 @@ function randomNum() {
     answer = Math.floor(Math.random() * 101);
     console.log(answer)
     setDisabled(false)
-    answerBtn.disabled = true
+    startBtn.disabled = true
 }
 
 function enterNum(event) {
